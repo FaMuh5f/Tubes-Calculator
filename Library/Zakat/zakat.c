@@ -1,16 +1,17 @@
 
+
 #include "zakat.h"
 
 // Menghitung hasil perhitungan zakat profesi
 // i.s : P dideklarasikan
-// f.s : return hasil perhitungan zakat profesi
+// f.s : Return hasil perhitungan zakat profesi
 float zakatProfesi(dataProfesi P){
 	return (Harta(P) - Kebutuhan(P)) * 0.025;
 }
 
 // Meminta input untuk perhitungan zakat provesi dan menampilkan hasil perhitungannya
-// i.s : sembarang
-// f.s : dimintanya input untuk perhitungan zakat provesi dan meng-output hasil perhitungannya
+// i.s : Sembarang
+// f.s : Dimintanya input untuk perhitungan zakat provesi dan meng-output hasil perhitungannya
 void hitungZakatProfesi(){
 	dataProfesi P;
 	printf("Total gaji selamat satu tahun: "); scanf("%d", &Harta(P));
@@ -19,19 +20,20 @@ void hitungZakatProfesi(){
 	printf("Total perhitungan= %d Rupiah\n", Harta(P)+Kebutuhan(P));
 	printf("Jika total perhitungan lebih besar dari pada harga Emas 85 gram pada saat itu maka anda harus membayar zakat\n");
 	printf("\n");
-	printf("Total zakat yang harus dibayar= %.5f rupiah", zakatProfesi(P)); 
+	printf("Total zakat yang harus dibayar: %.5f rupiah", zakatProfesi(P)); 
+	printf("\n");
 }
 
 // Menghitung hasil perhitungan zakat perdagangan
 // i.s : P dideklarasikan
-// f.s : return hasil perhitungan zakat perdagangan
+// f.s : Return hasil perhitungan zakat perdagangan
 float zakatPerdagangan(dataPerdagangan P){
-	return((Modal(P)+Laba(P)+Piutang(P)) - (Hutang(P)+Rugi(P))) * 25/1000;
+	return((Modal(P)+Laba(P)+Piutang(P)) - (Hutang(P)+Rugi(P))) * 0.025;
 }
 
 // Meminta input untuk perhitungan zakat perdagangan dan menampilkan hasil perhitungannya
-// i.s : sembarang
-// f.s : dimintanya input untuk perhitungan zakat perdagangan dan meng-output hasil perhitungannya
+// i.s : Sembarang
+// f.s : Dimintanya input untuk perhitungan zakat perdagangan dan meng-output hasil perhitungannya
 void hitungZakatPerdagangan(){
 	dataPerdagangan P;
 	printf("Total modal selama satu tahun: "); scanf("%d", &Modal(P));
@@ -43,19 +45,20 @@ void hitungZakatPerdagangan(){
 	printf("Total perhitungan= %d Rupiah\n", (Modal(P)+Laba(P)+Piutang(P))-(Hutang(P)+Rugi(P)));
 	printf("Jika total perhitungan lebih besar dari pada harga Emas 85 gram pada saat itu maka anda harus membayar zakat\n");
 	printf("\n");
-	printf("Total zakat yang harus dibayar= %.5f rupiah", zakatPerdagangan(P));
+	printf("Total zakat yang harus dibayar: %.5f rupiah", zakatPerdagangan(P));
+	printf("\n");
 }
 
 // Menghitung hasil perhitungan zakat emas atau perak
 // i.s : P dideklarasikan
-// f.s : return hasil perhitungan zakat emas atau perak
+// f.s : Return hasil perhitungan zakat emas atau perak
 float zakatEmasPerak(dataEmasPerak P){
 	return(Milik(P) - Pakai(P)) * 0.025;
 }
 
 // Meminta input untuk perhitungan zakat emas atau perak dan menampilkan hasil perhitungannya
-// i.s : sembarang
-// f.s : dimintanya input untuk perhitungan zakat emas atau perak dan meng-output hasil perhitungannya
+// i.s : Sembarang
+// f.s : Dimintanya input untuk perhitungan zakat emas atau perak dan meng-output hasil perhitungannya
 void hitungZakatEmasPerak(){
 	dataEmasPerak P;
 	puts("1. Emas");
@@ -70,7 +73,8 @@ void hitungZakatEmasPerak(){
 			printf("Total emas= %d gram\n", Milik(P)-Pakai(P));
 			printf("Jika total emas lebih besar dari pada 85 gram maka anda harus membayar zakat\n");
 			printf("\n");
-			printf("Total zakat yang harus dibayar= %.5f gram", zakatEmasPerak(P));
+			printf("Total zakat yang harus dibayar: %.5f gram", zakatEmasPerak(P));
+			printf("\n");
 			break;
 		case '2':
 			system("cls");
@@ -80,21 +84,22 @@ void hitungZakatEmasPerak(){
 			printf("Total perak= %d gram\n", Milik(P)-Pakai(P));
 			printf("Jika total perak lebih besar dari pada 595 gram maka anda harus membayar zakat\n");
 			printf("\n");
-			printf("Total zakat yang harus dibayar= %.5f gram", zakatEmasPerak(P));
+			printf("Total zakat yang harus dibayar: %.5f gram", zakatEmasPerak(P));
+			printf("\n");
 			break;
 	}
 }
 
 // Menghitung hasil perhitungan zakat tabungan
 // i.s : P dideklarasikan
-// f.s : return hasil perhitungan zakat tabungan
+// f.s : Return hasil perhitungan zakat tabungan
 float zakatTabungan(dataTabungan P){
 	return (Saldo(P) - Bagi(P)) * 0.025;
 }
 
 // Meminta input untuk perhitungan zakat tabungan dan menampilkan hasil perhitungannya
-// i.s : sembarang
-// f.s : dimintanya input untuk perhitungan zakat tabungan dan meng-output hasil perhitungannya
+// i.s : Sembarang
+// f.s : Dimintanya input untuk perhitungan zakat tabungan dan meng-output hasil perhitungannya
 void hitungZakatTabungan(){
 	dataTabungan P;
 	printf("Total Saldo selama satu tahun: "); scanf("%d", &Saldo(P));
@@ -104,11 +109,12 @@ void hitungZakatTabungan(){
 	printf("Jika total harta lebih besar dari pada harga Emas 85 gram pada saat itu maka anda harus membayar zakat\n");
 	printf("\n");
 	printf("Total zakat yang harus dibayar: %.5f rupiah", zakatTabungan(P));
+	printf("\n");
 }
 
 // Menghitung hasil perhitungan zakat pertanian
 // i.s : P dideklarasikan
-// f.s : return hasil perhitungan zakat pertanian
+// f.s : Return hasil perhitungan zakat pertanian
 float zakatPertanian(dataPertanian P){
 	system("cls");
 	puts("1. Air hujan atau sungai");
@@ -124,19 +130,20 @@ float zakatPertanian(dataPertanian P){
 }
 
 // Meminta input untuk perhitungan zakat pertanian dan menampilkan hasil perhitungannya
-// i.s : sembarang
-// f.s : dimintanya input untuk perhitungan zakat pertanian dan meng-output hasil perhitungannya
+// i.s : Sembarang
+// f.s : Dimintanya input untuk perhitungan zakat pertanian dan meng-output hasil perhitungannya
 void hitungZakatPertanian(){
 	dataPertanian P;
 	printf("Jika total hasil panen lebih besar dari pada 520 kg maka anda harus membayar zakat\n");
 	printf("\n");
 	printf("Total hasil panen ketika panen(kg): "); scanf("%d", &Panen(P));
 	printf("Total zakat yang harus dibayar: %.5f kg", zakatPertanian(P));	
+	printf("\n");
 }
 
-// Menghitung dasar hukum zakat dalam islam
-// i.s : sembarang
-// f.s : ditampilkannya dasar hukum zakat maal dalam islam
+// Menampilkan dasar hukum zakat dalam islam
+// i.s : Sembarang
+// f.s : Ditampilkannya dasar hukum zakat maal dalam islam
 void dasarHukum(){
 	printf("Zakat merupakan bagian dari rukun Islam yang lima, merupakan kewajiban yang sudah ditetapkan bagi yang sudah terpenuhi syarat-syaratnya.\n");
 	printf("Allah Taala berfirman,\n");
@@ -157,4 +164,5 @@ void dasarHukum(){
 	printf("3. Pertanian dan buah-buahan (gandum, kurma, dan anggur)\n");
 	printf("\n");
 	printf("sumber : rumaysho.com");
+	printf("\n");
 }
