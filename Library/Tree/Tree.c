@@ -7,158 +7,259 @@
 /* Tgl Mod 		: 12 /07 / 2020 */
 /* Tgl Mod 2	: 12 / 07 / 2021 */
 
-#include "bintree.h"
+#include "Tree.h"
 
-addressTree alokasiTree(infoTypeTree X){
-/* 	Mengalokasikan tree dan akan mengembalikannya dengan adress hasil dari alokasi. */
-/* 	I.S = X yang belum dialokasi. 													*/
-/* 	F.S = Alamat tree yang sudah dialokasi. 										*/
+// Meng-return address hasil alokasi Tree	
+// i.s   : X belum dialokasi.						
+// f.s   : Menghasilkan address X.
+addressTree AlokasiTree(infotypeTree X) {
+   	addressTree P;
 
-	addressTree P;
-	
-	P = (addressTree)malloc(sizeof(elmtNode));
-	if(P!=Nil){
-		strcpy(info(P),X);
-		Kiri(P)=Nil;
-		Kanan(P)=Nil;
-	} 
-	return P;
+   	P=(addressTree)malloc(sizeof(ElmtNode));   
+	if(P!=Nil) {
+		strcpy(Info(P),X);
+		Left(P)=Nil;
+		Right(P)=Nil;	 
+   	}
+   	return P;
 }
 
-boolean treeKosong(binTree P){
-/* 	Mengembalikan TRUE bila tree masih kosong. 			*/
-/* 	I.S = P terdefinisikan. 							*/
-/* 	F.S = P diketahui apakah kosong atau sudah di isi. 	*/
-
+// Meng-return true jika Tree kosong.	
+// i.s   : P dideklarasikan.					  		
+// f.s   : P diketahui kosong atau tidaknya.  
+boolean IsEmptyTree(BinTree P) {
 	return (P==Nil);
+}
+
+// Meng-return anak kiri Tree.	
+// i.s   : P dideklarasikan.				  	
+// f.s   : Anak kiri P direturn.
+BinTree GetLeft(BinTree P) { 
+    return Left(P); 	
+}
+
+// Meng-return anak kanan Tree.	
+// i.s   : P dideklarasikan.				  		
+// f.s   : Anak kanan P direturn.
+BinTree GetRight(BinTree P) {
+    return Right(P);
+}
+
+// Membuat sebuah node baru di Tree .	
+// i.s   : P dan X dideklarasikan.					
+// f.s   : P berhasil dibuat dengan infotype X.	
+void newNode(BinTree *P, infotypeTree X) {  
+	*P=AlokasiTree(X);
+	if(*P!=Nil) {
+		strcpy(Info(*P),X);
+	    Left(*P)=Right(*P)=Nil;
+	} 
+} 
+
+// Membuat sebuah Tree.								
+// i.s   : P, L, R  dan X dideklarasikan.						 	
+// f.s   : Menghasilkan Tree P dengan anak kiri L,
+//		   anak kanan R dan infotype X.	
+void MakeTree(infotypeTree X, BinTree L, BinTree R, BinTree *P) {   
+	*P=AlokasiTree(X);
+	if(*P!=Nil) {
+		strcpy(Info(*P),X);
+	   	Left(*P)=L;
+		Right(*P)=R;	
+	}
+}
+
+// Menampilkan semua info dari setiap node pada Expression Tree.	
+// i.s   : Pohon P dideklarasikan.										
+// f.s   : Info setiap node pada Tree P ditampilkan.
+void PrintInfoTree(BinTree P) {
+	BinTree L, R, Px;
 	
-}
-
-binTree keKiri(binTree P){
-/* 	Akan mengembalikan anak kiri tree. 	*/
-/* 	I.S = P terdefinisikan. 			*/
-/* 	F.S = Dikembalikannya anak kiri P. 	*/
-
-	return kiri(P);
-
-}
-
-binTree keKanan(binTree P){
-/* 	Akan mengembalikan anak kanan tree. */
-/* 	I.S = P terdefinisikan. 			*/
-/* 	F.S = Dikembalikannya anak kanan P. */
-
-	return kanan(P);
-
-}
-
-void buatTree(infoTypeTree X, binTree L, binTree R, binTree *P){
-/* 	Membuat Tree. 																	*/
-/* 	I.S = P, L, R, dan X terdefinisikan. 											*/
-/* 	F.S = Tree P berhasil dibuat dengan anak kiri L, anak kanan R, dan infoType X.	*/
-
-	*P=alokasiTree(X);
-	if(*P!=Nil){
-		strcpy(info(*P),X);
-		Kiri(*P)=L;
-		Kanan(*P)=R;
-	}
-}
-
-void buatNode(binTree *P, infoTypeTree X){
-/* 	Membuat node baru pada tree. 						*/
-/* 	I.S = P dan X terdefinisikan.						*/
-/* 	F.S = node baru P behasil dibuat dengan infoType X. */
-
-	*P=alokasiTree(X);
-	if(*P!=Nil){
-		strcpy(info(*P),X);
-		Kiri(*P)=Kanan(*P)=Nil;
-	}
-
-}
-
-void printInfoTree(binTree P){
-/* 	Menampilkan Tree. 							*/
-/* 	I.S = P terdefinisikan.						*/
-/* 	F.S = Menampilkan semua info pada Tree P.	*/
-
-	binTree L,R,Px;
-	
-	if(P!=Nil){
-		printInfoTree(Kiri(P));
-		printf("Info Node\t: %s\n", Info(P));
-		if(keKiri(P)!=Nil){
-			L = keKiri(P);
-			printf("Anak Kiri\t: %s\n", Info(L));
-		}else {
-			printf("Anak Kiri\t: Null\n");
+	if(P != Nil) {
+		PrintInfoTree(Left(P)); 
+		printf("Info Node\t: %s\n",Info(P));
+		if(GetLeft(P)!=Nil) {
+			L = GetLeft(P);
+			printf("Left Son\t: %s\n",Info(L));
 		}
-		if(keKanan(P)!=Nil){
-			R = keKanan(P);
-			printf("Anak Kanan\t: %s\n", Info(R));
-		}else{
-			printf("Anak Kanan\t: Null\n");
+		else {
+			printf("Left Son\t: null\n");
 		}
-		printf("\n");
-		printInforTree(Kanan(P));
+		if(GetRight(P)!=Nil) {
+			R = GetRight(P);
+			printf("Right Son\t: %s\n",Info(R));
+		}
+		else{
+			printf("Right Son\t: null\n");
+		}	
+		printf("\n");  
+		PrintInfoTree(Right(P));
 	}
 }
 
-float jadiFloat(String X){
-/* 	Mengubah string menjadi int dan mengembalikannya. 					*/
-/* 	I.S = X terdefinisikan. 											*/
-/* 	F.S = String X berhasil diubah menjadi Integer X dan dikembalikan. 	*/
-
+// Melakukan casting terhadap sebuah String menjadi integer   
+// lalu mengembalikannya.										
+// i.s   : X adalah String dideklarasikan.							
+// f.s   : Integer hasil casting terhadap X.
+float Float(String X) {	
 	return atof(X);
-
-}
-boolean Operator(char c){
-/* 	Mengembalikan TRUE bila karakter C yang dicek adalah sebuah operator. 			*/
-/* 	I.S = karakter C yang dicek terdefinisikan. 									*/
-/* 	F.S = Kareakter C yang dicek diketahui apoakah itu adalah operator atau bukan. 	*/
-
-	return (c =='*' || c =='/' || c == '+' || c == '-' || c == ':' || c == '^');
-
 }
 
-int Prioritas(char x){
-/* 	Mengembalikan nilai prioritas dari operator. 			*/
-/* 	I.S = x terdefinisikan. 								*/
-/* 	F.S = Nilai prioritas dari operator X dikembalikan. 	*/
+// Meng-return true jika karakter yang diperiksa merupakan operator.	
+// i.s   : Karakter yang diperiksa dideklarasikan.							
+// f.s   : Karakter yang diperiksa diketahui operator atau bukan.
+boolean Operator(char c) {  
+	return(c=='+' || c=='-' || c=='*' || c=='x' || c=='/' || c ==':' || c =='^');
+} 
 
-	switch(x){
-		case ')': return 0;
-		case '(': return 0;
-		case '+': return 1;
-		case '-': return 1;
-		case '*': return 2;
-		case '/': return 2;
-		case ':': return 2;
-		case '^': return 3;
+// Meng-return nilai prioritas dari sebuah operator, 
+// nilai berbanding lurus dengan prioritas.				
+// i.s   : X dideklarasikan.								
+// f.s   : Nilai prioritas X dikirimkan.
+int Prioritas(char x) {	
+    switch(x) {
+        case ')': return 0;
+        case '(': return 0;
+        case '+': return 1;
+        case '-': return 1;
+        case '*': return 2;
+        case 'x': return 2;
+        case '/': return 2;
+        case ':': return 2;
+		case '^': return 3;    
+    }
+}
+
+// Meng-return true jika operator1 memiliki prioritas yang
+// lebih tinggi dibanding operator2.								
+// i.s   : a dan b dideklarasikan.										
+// f.s   : Diketahui operator mana yang memiliki nilai prioritas tinggi.
+boolean PrioritasKah(char a, char b) {
+    return (Prioritas(a)>=Prioritas(b));
+}
+
+// Meng-return true jika operator1 memiliki prioritas yang
+// lebih tinggi dibanding operator2.								
+// i.s   : a dan b dideklarasikan.										
+// f.s   : Diketahui operator mana yang memiliki nilai prioritas tinggi.
+void InfixKePostfix(String infix, String postfix) {
+    int i, index=0, size;
+	char tmpchar;
+    stackChar tmp;
+    
+    createStackChar(&tmp);
+    
+    size=strlen(infix);
+    for(i=0; i<size; i++) {
+        switch(infix[i]) {
+        	case '.':
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                postfix[index]=infix[i];
+                index++;
+                break;
+            case '+':
+            case '-':
+            case '*':
+            case 'x':
+            case '/':
+            case ':':
+            case '^':
+                postfix[index]=' ';
+                index++;            
+                if(isEmptyStackChar(tmp)){
+                    pushStackChar(&tmp,infix[i]);
+                }
+				else if(!PrioritasKah(Info(Top(tmp)),infix[i])){
+                    pushStackChar(&tmp,infix[i]);
+                }
+				else{
+                    while(!isEmptyStackChar(tmp)&&PrioritasKah(Info(Top(tmp)),infix[i])){
+                        popStackChar(&tmp,&tmpchar);
+                        postfix[index]=tmpchar;
+                        index++;
+                    }                
+                    pushStackChar(&tmp,infix[i]);
+                }
+                break;
+            case ')':
+                while(!isEmptyStackChar(tmp)&&Info(Top(tmp))!='('){
+                    popStackChar(&tmp,&tmpchar);
+                    postfix[index]=tmpchar;
+                    index++;                    
+                }
+                popStackChar(&tmp,&tmpchar);
+                break;
+            case '(':
+                pushStackChar(&tmp,infix[i]);
+                break;
+        }
+    }
+    while(!isEmptyStackChar(tmp)) {
+        popStackChar(&tmp,&tmpchar);
+        postfix[index]=tmpchar;
+        index++;                  
+    }    
+    postfix[index]='\0';
+}
+
+// Meng-return hasil kalkuasi dari Expression Tree.	
+// i.s   : P dideklarasikan.								
+// f.s   : Hasil kalkulasi dari P direturn.	
+float CalculateTree(BinTree P) {
+	int i;
+	float tmp=1.0;
+	  
+    if (IsEmptyTree(P)) {
+        return 0;  
 	}
-}
-
-boolean prioritasKah(char a, char b){
-/* 	Mengembalikan TRUE bila operator1 memiliki nilai priotias yang leibh tinggi
-	dari operator2. 													*/
-/* 	I.S = a dan b terdefinisikan. 										*/
-/* 	F.S = Diketahui operator a atau operator b yang lebih prioritas. 	*/
-
-	return (Prioritas(a)>=Prioritas(b));
-
-}
-
-void infixKePostfix(String infix,String postfix){
-/* 	Menggubah ekspresi infix ke postfix. 			*/
-/* 	I.S = Infix terdefinisikan. 					*/
-/* 	F.S = Infix berhasil dirubah menjadi postfix. 	*/
-
-}
-
-float hitungTree(binTree P){
-/* 	Mengembalikan hasil perhitungan dari Tree. 			*/
-/* 	I.S = P terdefinisikan. 							*/
-/* 	F.s = Hasil perhitungan dari Tree P dikembalikan.	*/
-
+    else if (IsEmptyTree(Left(P)) && IsEmptyTree(Right(P))) {
+        return Float(Info(P));  
+    }
+  
+    float left = CalculateTree(Left(P));  
+    float right = CalculateTree(Right(P));  
+    
+    if(strcmp(Info(P),"+")==0) {
+		return left+right;
+	}
+	else if(strcmp(Info(P),"-")==0) {
+		return left-right;
+	}
+	else if(strcmp(Info(P),"*")==0) {
+		return left*right;
+	}
+	else if(strcmp(Info(P),"x")==0) {
+		return left*right;
+	}
+	else if(strcmp(Info(P),"/")==0) {
+		if(right!=0.00){
+			return left/right;
+		}
+		else{
+			puts ("can't divide by zero");
+			return 0;
+		}
+	}
+	else if(strcmp(Info(P),":")==0) {
+		if(right!=0.00){
+			return left/right;
+		}
+		else{
+			puts ("can't divide by zero");
+			return 0;
+		}
+	}
+	for(i=0; i<right; i++) {
+		tmp *= left;
+	}
+	return tmp;
 }
