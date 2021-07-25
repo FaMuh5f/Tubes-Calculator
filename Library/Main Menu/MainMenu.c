@@ -14,7 +14,6 @@ int MainMenu(){
 			case '2' : 
 				Zakat();
 				break;
-				break;
 			case '3' :
 				Identity();
 				break;
