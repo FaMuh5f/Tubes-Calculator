@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "stacktree.h": "c"
+        "stacktree.h": "c",
+        "zakat.h": "c"
     }
 }

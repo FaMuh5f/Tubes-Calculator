@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <ctype.h>
 
-#include "zakat.h">
+#include "zakat.h"
 
 // Meminta input untuk perhitungan zakat provesi dan menampilkan hasil perhitungannya
 // i.s : Sembarang
 // f.s : Dimintanya input untuk perhitungan zakat provesi dan meng-output hasil perhitungannya
 void hitungZakatProfesi(){
-	int Harta,Kebutuhan,Total,Zakat;
+	int Harta,Kebutuhan,Total;
+	float Zakat;
 	printf("Total gaji selama satu tahun: "); Harta = input();
 	printf("kebutuhan selama setahun (Rp): "); Kebutuhan = input();
 	printf("\n");
@@ -15,8 +16,8 @@ void hitungZakatProfesi(){
 	printf("Total perhitungan= %d Rupiah\n", Total);
 	printf("Jika total perhitungan lebih besar dari pada harga Emas 85 gram pada saat itu maka anda harus membayar zakat\n");
 	printf("\n");
-	Total = (Harta - Kebutuhan)*25/1000;
-	printf("Total zakat yang harus dibayar: %d rupiah", Total);
+	Zakat = ((float)(Harta - Kebutuhan))*25/1000;
+	printf("Total zakat yang harus dibayar: %.5f rupiah", Zakat);
 	printf("\n");
 	
 }
@@ -26,6 +27,7 @@ void hitungZakatProfesi(){
 // f.s : Dimintanya input untuk perhitungan zakat perdagangan dan meng-output hasil perhitungannya
 void hitungZakatPerdagangan(){
 	int Modal,Laba,Piutang,Hutang,Rugi,Total;
+	float Zakat;
 	printf("Total modal selama satu tahun: "); Modal = input();
 	printf("Total laba selama satu tahun: "); Laba = input();
 	printf("Total piutang selama satu tahun: "); Piutang = input();
@@ -36,8 +38,8 @@ void hitungZakatPerdagangan(){
 	printf("Total perhitungan= %d Rupiah\n", Total);
 	printf("Jika total perhitungan lebih besar dari pada harga Emas 85 gram pada saat itu maka anda harus membayar zakat\n");
 	printf("\n");
-	Total = ((Modal+Laba+Piutang)-(Hutang+Rugi))*25/1000;
-	printf("Total zakat yang harus dibayar: %d rupiah", Total);
+	Zakat = ((float)((Modal+Laba+Piutang)-(Hutang+Rugi)))*25/1000;
+	printf("Total zakat yang harus dibayar: %.5f rupiah", Zakat);
 	printf("\n");
 }
 
@@ -46,6 +48,7 @@ void hitungZakatPerdagangan(){
 // f.s : Dimintanya input untuk perhitungan zakat emas atau perak dan meng-output hasil perhitungannya
 void hitungZakatEmasPerak(){
 	int Milik,Pakai,Total;
+	float Zakat;
 	puts("1. Emas");
 	puts("2. Perak");
 	puts("Masukan pilihan sesuai nomor: ");
@@ -59,21 +62,21 @@ void hitungZakatEmasPerak(){
 			printf("Total emas= %d gram\n", Total);
 			printf("Jika total emas lebih besar dari pada 85 gram maka anda harus membayar zakat\n");
 			printf("\n");
-			Total = (Milik-Pakai)*25/1000;
-			printf("Total zakat yang harus dibayar: %d gram", Total);
+			Zakat = ((float)(Milik-Pakai))*25/1000;
+			printf("Total zakat yang harus dibayar: %.5f gram", Zakat);
 			printf("\n");
 			break;
 		case '2':
 			system("cls");
-			printf("Total perak(gram) milik selama satu tahun: "); Milik = input();
-			printf("Total perak(gram) pakai selama satu tahun: "); Pakai = input();
+			printf("Total perak(gram) milik: "); Milik = input();
+			printf("Total perak(gram) pakai: "); Pakai = input();
 			printf("\n");
 			Total = Milik-Pakai;
 			printf("Total perak= %d gram\n", Total);
 			printf("Jika total perak lebih besar dari pada 595 gram maka anda harus membayar zakat\n");
 			printf("\n");
-			Total = (Milik-Pakai)*25/1000;;
-			printf("Total zakat yang harus dibayar: %d gram", Total);
+			Zakat = ((float)(Milik-Pakai))*25/1000;;
+			printf("Total zakat yang harus dibayar: %.5f gram", Zakat);
 			printf("\n");
 			break;
 	}
@@ -84,6 +87,7 @@ void hitungZakatEmasPerak(){
 // f.s : Dimintanya input untuk perhitungan zakat tabungan dan meng-output hasil perhitungannya
 void hitungZakatTabungan(){
 	int Saldo,Bagi,Total;
+	float Zakat;
 	printf("Total Saldo selama satu tahun: "); Saldo = input();
 	printf("Total bagi hasil selama satu tahun: "); Bagi = input();
 	printf("\n");
@@ -91,8 +95,8 @@ void hitungZakatTabungan(){
 	printf("Total perhitungan= %d rupiah\n", Total);
 	printf("Jika total harta lebih besar dari pada harga Emas 85 gram pada saat itu maka anda harus membayar zakat\n");
 	printf("\n");
-	Total = (Saldo - Bagi)*25/1000;
-	printf("Total zakat yang harus dibayar: %d rupiah", Total);
+	Zakat = ((float)(Saldo - Bagi))*25/1000;
+	printf("Total zakat yang harus dibayar: %.5f rupiah", Zakat);
 	printf("\n");
 }
 
@@ -101,6 +105,7 @@ void hitungZakatTabungan(){
 // f.s : Dimintanya input untuk perhitungan zakat pertanian dan meng-output hasil perhitungannya
 void hitungZakatPertanian(){
 	int Panen,Total;
+	float Zakat;
 	printf("Jika total hasil panen lebih besar dari pada 520 kg maka anda harus membayar zakat\n");
 	printf("\n");
 	printf("Total hasil panen ketika panen(kg): "); Panen = input();
@@ -112,12 +117,12 @@ void hitungZakatPertanian(){
 	puts("Masukan pilihan sesuai nomor: ");
 	switch(getch()){
 		case '1':
-			Total = Panen*1/10;
-			printf("Total zakat yang harus dibayar: %d kg", Total);
+			Zakat = ((float)Panen)*1/10;
+			printf("Total zakat yang harus dibayar: %.5f kg", Zakat);
 			break;
 		case '2':
-			Total = Panen*5/100;
-			printf("Total zakat yang harus dibayar: %d kg", Total);
+			Zakat = ((float)Panen)*5/100;
+			printf("Total zakat yang harus dibayar: %.5f kg", Zakat);
 			break;
 	}	
 }
