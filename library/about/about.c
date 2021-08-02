@@ -1,5 +1,4 @@
-
-#include "About.h"
+#include "about.h"
 
 void Aqil(){
 	gotoxy(40,16); printf("Nama \t\t\t: Aqil Rahman\n");
@@ -49,17 +48,17 @@ void Identity(){
 	gotoxy(40,15); switch(getch()) {	
 	    case '1' :
 	    	Aqil();
-	    	/*otoxy(40,23);*/ system("pause");
+	    	gotoxy(40,23); system("pause");
 	    	Identity();
 			break;
 		case '2' : 
 			Fadhil();
-			/*gotoxy(40,23);*/ system("pause");
+			gotoxy(40,23); system("pause");
 			Identity();
 			break;
 		case '3' :
 			Nauval();
-			/*gotoxy(40,23);*/ system("pause");
+			gotoxy(40,23); system("pause");
 			Identity();
 			break;
 		case '4':

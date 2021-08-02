@@ -1,4 +1,3 @@
-
 #include "kalkulator.h"
 
 //COORD coord = {X: 0, Y: 0};

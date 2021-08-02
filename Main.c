@@ -1,4 +1,3 @@
-
 #include "library/kalkulator/kalkulator.h"
 
 //author : Aqil Rahman
@@ -9,14 +8,14 @@
 int main() {
 
 	system("cls");
-	/*gotoxy(30,10);*/ puts("=`=`=`=`=`=`=`=`=` KALULATOR `=`=`=`=`=`=`=`=`=");
-	/*gotoxy(45,11);*/ puts("*** MAIN MENU ***\n");
-	/*gotoxy(38,12);*/ puts("1. Kalkulator");
-	/*gotoxy(38,13);*/ puts("2. Zakat");
-	/*gotoxy(38,14);*/ puts("3. About");
-	/*gotoxy(38,15);*/ puts("4. Exit");
-	/*gotoxy(30,16);*/ puts("Enter according to the number choice : ");
-	/*gotoxy(30,17);*/ switch(getch()) {	
+	gotoxy(30,10); puts("=`=`=`=`=`=`=`=`=` KALULATOR `=`=`=`=`=`=`=`=`=");
+	gotoxy(45,11); puts("*** MAIN MENU ***\n");
+	gotoxy(38,12); puts("1. Kalkulator");
+	gotoxy(38,13); puts("2. Zakat");
+	gotoxy(38,14); puts("3. About");
+	gotoxy(38,15); puts("4. Exit");
+	gotoxy(30,16); puts("Enter according to the number choice : ");
+	gotoxy(30,17); switch(getch()) {	
 		case '1' :
 		    kalkulatorMenu();
 			break;

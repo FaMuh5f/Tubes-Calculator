@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../stack/stackchar.h"
+#include "../stack/stackChar.h"
 #include "../boolean/boolean.h"
 
 typedef char String[50];

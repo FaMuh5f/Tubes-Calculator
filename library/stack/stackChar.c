@@ -1,4 +1,3 @@
-
 #include "stackChar.h"
 
 // Mengembalikan true jika Stack Char kosong. 

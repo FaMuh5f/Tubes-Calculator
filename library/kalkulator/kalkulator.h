@@ -5,7 +5,7 @@
 
 //#include <windows.h>
 #include "../tree/tree.h"
-#include "../stack/stacktree.h"
+#include "../stack/stackTree.h"
 #include "../zakat/zakat.h"
 #include "../about/about.h"
 
@@ -51,4 +51,3 @@ void cek();
 void gotoxy();
 
 #endif
-

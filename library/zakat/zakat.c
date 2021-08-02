@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <ctype.h>
 
+#include "zakat.h">
+
 // Meminta input untuk perhitungan zakat provesi dan menampilkan hasil perhitungannya
 // i.s : Sembarang
 // f.s : Dimintanya input untuk perhitungan zakat provesi dan meng-output hasil perhitungannya
 void hitungZakatProfesi(){
 	int Harta,Kebutuhan,Total,Zakat;
-	printf("Total gaji selamat satu tahun: "); Harta = input();
-	printf("kebutuhan selamat setahun (Rp): "); Kebutuhan = input();
+	printf("Total gaji selama satu tahun: "); Harta = input();
+	printf("kebutuhan selama setahun (Rp): "); Kebutuhan = input();
 	printf("\n");
 	Total = Harta - Kebutuhan;
 	printf("Total perhitungan= %d Rupiah\n", Total);
