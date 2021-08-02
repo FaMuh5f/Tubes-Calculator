@@ -7,7 +7,7 @@
 /* Tgl Mod 		: 12 /07 / 2020 */
 /* Tgl Mod 2	: 12 / 07 / 2021 */
 
-#include "tree.h"
+#include "Tree.h"
 
 // Meng-return address hasil alokasi Tree	
 // i.s   : X belum dialokasi.						

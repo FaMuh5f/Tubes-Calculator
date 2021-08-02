@@ -20,8 +20,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../stack/stackChar.h"
-#include "../boolean/boolean.h"
+#include "../Stack/StackChar.h"
+#include "../Boolean/Boolean.h"
 
 typedef char String[50];
 

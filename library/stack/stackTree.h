@@ -11,7 +11,7 @@
 #include<conio.h>
 #include<stdio.h>
 #include<stdlib.h>
-#include "../tree/tree.h"
+#include "../Tree/Tree.h"
 
 typedef BinTree infotypeStackT;
 typedef struct tElmST *addressStackT;

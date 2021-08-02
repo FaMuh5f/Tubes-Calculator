@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
-#include "zakat.h"
+#include "Zakat.h"
 
 // Meminta input untuk perhitungan zakat provesi dan menampilkan hasil perhitungannya
 // i.s : Sembarang
@@ -119,10 +119,12 @@ void hitungZakatPertanian(){
 		case '1':
 			Zakat = ((float)Panen)*1/10;
 			printf("Total zakat yang harus dibayar: %.5f kg", Zakat);
+			printf("\n");
 			break;
 		case '2':
 			Zakat = ((float)Panen)*5/100;
 			printf("Total zakat yang harus dibayar: %.5f kg", Zakat);
+			printf("\n");
 			break;
 	}	
 }
@@ -150,6 +152,7 @@ void dasarHukum(){
 	printf("3. Pertanian dan buah-buahan (gandum, kurma, dan anggur)\n");
 	printf("\n");
 	printf("Source : rumaysho.com");
+	printf("\n");
 }
 
 // menerima input hanya integer dengan menggunakan tabel ASCII

@@ -103,13 +103,20 @@ void kalkulatorMenu() {
 	printf("\n6. Menambahkan '(' dan ')' ke dalam operasi perhitungan untuk menentukan prioritas.");
 	printf("\n7. Tolong lebih spesifik ketika menginputkan operasi.");
 	printf("\n   Contoh : anda ingin melakukan operasi prioritas 3 dipangkat 2 dikali 3.");
-	printf("\n   Maka anda harus menginputkan (3^2)*3 bukan (3^2)*3.");
-	printf("\n8. Bilangan yang berlaku adalah bilangan bulat \n (bilangan negatif, nol, dan bilangan positif) dan bilngan desimal.");
+	printf("\n   Maka anda harus menginputkan (3^2)*3 bukan (3^2)3.");
+	printf("\n8. Bilangan yang berlaku adalah bilangan bulat \n (bilangan negatif, nol, dan bilangan positif) dan bilangan desimal.");
 	printf("\n\n");
 	system("PAUSE");
 	system("cls");
 	puts("\n\t\t\t# KALKULATOR #\n");
+	ulang:
 	printf("Silakan masukkan operasi matematika :\n\n"); scanf(" %s",input);
+	if(isMasukanBenar(input)==0){
+		input[0]='\0';
+		system("pause");
+		system("cls");
+		goto ulang;
+	}
 	InfixKePostfix(input, postfix);
 	printf("\n");
 	ex = BuildExpressionTree(postfix);
@@ -189,6 +196,9 @@ void About() {
 		Identity();
 }
 
+// Deskripsi : Mengarahkan user ke menu selanjutnya.
+// i.s : sembarang.
+// f.s : program mengarahkan ke menu lain.
 void cek(){
 	system("cls");
 	gotoxy(38,12); puts("1. Hitung kembali");
@@ -208,6 +218,71 @@ void cek(){
 	}
 }
 
-void gotoxy(int x, int y){
-	printf("\033[%d;%dH", y, x);
+// Deskripsi : Memperbaiki interface program.
+// i.s : program belum tersusun.
+// f.s : program sudah tersusun.
+void gotoxy(int x, int y) {
+    printf("\033[%d;%dH", y, x);
+}
+
+// Deskripsi : Mengecek apakah inputan sudah benar atau belum.
+// i.s : sembarang.
+// f.s : String input_s.
+int isMasukanBenar(String input_s){
+    int i, size, nextHarusDigit=0;
+	char tmpchar;
+    size=strlen(input_s);
+    //Cek Awal dan Akhir,tidak boleh operator
+    if(((isOperator(input_s[0])==1 || isOperator(input_s[size-1])==1) && isUpperPrior(input_s[0])==0 && isUpperPrior(input_s[size-1])==0) || strcmp(input_s,"()")==0){
+    	printf("Masukan salah, ulangi!\n");
+		return 0;
+	}
+    //Cek Keseluruhan
+    for(i=0;i<size;i++){
+		if(isUpperPrior(input_s[i])==1) continue;
+		
+		if(isDigit(input_s[i])==1){
+			nextHarusDigit=0;
+			continue;
+		}
+		//Cek bila terdapat operator double, pengecualian pada '(' dan ')'
+		if((isOperator(input_s[i])==1 && nextHarusDigit==0)){
+			nextHarusDigit=1;
+			continue;
+		}
+		else{
+			printf("Invalid input, try again!\n");
+			return 0;
+		}
+	}
+}
+
+// Deskripsi : Mengecek apakah berupa angka.
+// i.s : sembarang.
+// f.s : inputan adalah angka dan berada diposisi yang benar.
+int isDigit(char c){
+	if(c>='0' && c<='9') {
+		return 1;
+	}
+	return 0;
+}
+
+// Deskripsi : Mengecek apakah operator sudah benar.
+// i.s : sembarang.
+// f.s : operator sudah tepat dan berada di tempat yang tepat.
+int isOperator(char c){
+	if((c>39 && c<44) || c=='-' || c=='/' || c==':' || c=='^' || c=='x' || c=='X'){
+		return 1;
+	}
+	return 0;
+}
+
+// Deskripsi : Mengecek apakah ada kurung atau tidak.
+// i.s : sembarang.
+// f.s : tanda kurung ada di dalam hitungan.
+int isUpperPrior(char c){
+	if(c=='(' || c==')'){
+		return 1;
+	}
+	return 0;
 }

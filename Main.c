@@ -8,7 +8,7 @@
 int main() {
 
 	system("cls");
-	gotoxy(30,10); puts("=`=`=`=`=`=`=`=`=` KALULATOR `=`=`=`=`=`=`=`=`=");
+	gotoxy(30,10); puts("=`=`=`=`=`=`=`=`=` KALKULATOR `=`=`=`=`=`=`=`=`=");
 	gotoxy(45,11); puts("*** MAIN MENU ***\n");
 	gotoxy(38,12); puts("1. Kalkulator");
 	gotoxy(38,13); puts("2. Zakat");
@@ -27,7 +27,7 @@ int main() {
 			break;
 		case '4' :
 			system("cls");
-			puts("Terima kasih telah menggunakan aplikasi, BYE - BYE");
+			gotoxy(35,14); puts("Terima kasih telah menggunakan aplikasi, BYE - BYE");
 			return 0;
 		default :
 			puts("\nThe Number is unvailable, try again!");

@@ -1,4 +1,4 @@
-#include "stackTree.h"
+#include "StackTree.h"
 
 // Mengembalikan nilai true jika Stack Tree kosong.	
 // I.S   : S terdefinisi.					 	

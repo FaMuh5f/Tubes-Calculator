@@ -10,7 +10,7 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-#include "../boolean/boolean.h"
+#include "../Boolean/Boolean.h"
 
 typedef char infotypeStackC;
 typedef struct tElmSC *addressStackC;

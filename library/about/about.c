@@ -1,5 +1,8 @@
-#include "about.h"
+#include "About.h"
 
+// Menampilkan informasi Aqil.				
+// I.S   : Sembarang.						
+// F.S   : informasi Aqil ditampilkan.
 void Aqil(){
 	gotoxy(40,16); printf("Nama \t\t\t: Aqil Rahman\n");
 	gotoxy(40,17); printf("Tempat, Tanggal Lahir \t: Payakumbuh, 23 Oktober 2001\n");
@@ -10,6 +13,9 @@ void Aqil(){
 	gotoxy(40,22); printf("Motto Hidup \t\t: Be Your Self\n");
 }
 
+// Menampilkan informasi Fadhil.			
+// I.S   : Sembarang.						
+// F.S   : informasi Fadhil ditampilkan.
 void Fadhil(){
 
 	gotoxy(40,16); printf("Nama \t\t\t: Fadhil Muhammad\n");
@@ -21,6 +27,9 @@ void Fadhil(){
 	gotoxy(40,22); printf("Motto Hidup \t\t: Fast and Accurate\n");
 }
 
+// Menampilkan informasi Nauval.				
+// I.S   : Sembarang.						
+// F.S   : informasi Nauval. ditampilkan.
 void Nauval(){
 	gotoxy(40,16); printf("Nama \t\t\t: Nauval Ozora Mahadri\n");
 	gotoxy(40,17); printf("Tempat, Tanggal Lahir \t: Bandung, 29 Juli 2002\n");
@@ -30,11 +39,11 @@ void Nauval(){
 	gotoxy(40,21); printf("Hobi \t\t\t: Main Game\n");
 	gotoxy(40,22); printf("Motto Hidup \t\t: gak ada yang gak bisa\n");
 }
-	
+
+// Menampilkan menu identitas.				
+// I.S   : Sembarang.						
+// F.S   : Menu identitas ditampilkan.	
 void Identity(){
-	/* Menampilkan menu identitas.				*/
-	/* I.S   : Sembarang.						*/
-	/* F.S   : Menu identitas ditampilkan.		*/
 	
 	printf("\n\n");
 	system("cls");
@@ -43,7 +52,7 @@ void Identity(){
 	gotoxy(40,10); puts("1. Aqil Rahman - 2015240");
 	gotoxy(40,11); puts("2. Fadhil Muhammad - 2015240");
 	gotoxy(40,12); puts("3. Nauval Ozora Mahadri - 201524055");
-	gotoxy(40,13); puts("4. Keembali ke menu utama");
+	gotoxy(40,13); puts("4. Kembali ke menu utama");
 	gotoxy(40,14); puts("Masukkan pilihan sesuai nomor : ");
 	gotoxy(40,15); switch(getch()) {	
 	    case '1' :

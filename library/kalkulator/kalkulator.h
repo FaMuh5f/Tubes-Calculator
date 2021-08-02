@@ -5,7 +5,7 @@
 
 //#include <windows.h>
 #include "../tree/tree.h"
-#include "../stack/stackTree.h"
+#include "../stack/stacktree.h"
 #include "../zakat/zakat.h"
 #include "../about/about.h"
 
@@ -35,19 +35,34 @@ void About();
 // f.s   : Ditampilkannya main menu.		
 int mainMenu();
 
-// Nama Modul : Goto X Y
-// Deskripsi : Membuat game menjadi lebih rapih dengan menempatkan kata ke tengah layar
-// Author : Nauval Ozora Mahadri
-// Versi :  v1: 11 feb 2021, v2 : 13 feb 2021
-// IS : Kalimat masih dipinggir layar
-// FS : Kalimat sudah berada di tengah layar
-//void gotoxy(int x, int y);
-
-// Deskripsi : Menampilkan pilihan setelah penghitungan operasi
-// i.s : sembarang
-// f.s : pilihan diinputkan
+// Deskripsi : Mengarahkan user ke menu selanjutnya.
+// i.s : sembarang.
+// f.s : program mengarahkan ke menu lain.
 void cek(); 
 
+// Deskripsi : Memperbaiki interface program.
+// i.s : program belum tersusun.
+// f.s : program sudah tersusun.
 void gotoxy();
+
+// Deskripsi : Mengecek apakah inputan sudah benar atau belum.
+// i.s : sembarang.
+// f.s : String input_s.
+int isMasukanBenar(String input_s);
+
+// Deskripsi : Mengecek apakah operator sudah benar.
+// i.s : sembarang.
+// f.s : operator sudah tepat dan berada di tempat yang tepat.
+int isOperator(char c);
+
+// Deskripsi : Mengecek apakah berupa angka.
+// i.s : sembarang.
+// f.s : inputan adalah angka dan berada diposisi yang benar.
+int isDigit(char c);
+
+// Deskripsi : Mengecek apakah ada kurung atau tidak.
+// i.s : sembarang.
+// f.s : tanda kurung ada di dalam hitungan.
+int isUpperPrior(char c);
 
 #endif
