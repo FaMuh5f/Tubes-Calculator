@@ -1,3 +1,4 @@
+
 #include "kalkulator.h"
 
 //COORD coord = {X: 0, Y: 0};
@@ -109,7 +110,14 @@ void kalkulatorMenu() {
 	system("PAUSE");
 	system("cls");
 	puts("\n\t\t\t# KALKULATOR #\n");
+	ulang:
 	printf("Silakan masukkan operasi matematika :\n\n"); scanf(" %s",input);
+	if(isMasukanBenar(input)==0){
+		input[0]='\0';
+		system("pause");
+		system("cls");
+		goto ulang;
+	}
 	InfixKePostfix(input, postfix);
 	printf("\n");
 	ex = BuildExpressionTree(postfix);
@@ -208,6 +216,56 @@ void cek(){
 	}
 }
 
-void gotoxy(int x, int y){
-	printf("\033[%d;%dH", y, x);
+void gotoxy(int x, int y) {
+    printf("\033[%d;%dH", y, x);
+}
+
+int isMasukanBenar(String input_s){
+    int i, size, nextHarusDigit=0;
+	char tmpchar;
+    size=strlen(input_s);
+    //Cek Awal dan Akhir,tidak boleh operator
+    if(((isOperator(input_s[0])==1 || isOperator(input_s[size-1])==1) && isUpperPrior(input_s[0])==0 && isUpperPrior(input_s[size-1])==0) || strcmp(input_s,"()")==0){
+    	printf("Masukan salah, ulangi!\n");
+		return 0;
+	}
+    //Cek Keseluruhan
+    for(i=0;i<size;i++){
+		if(isUpperPrior(input_s[i])==1) continue;
+		
+		if(isDigit(input_s[i])==1){
+			nextHarusDigit=0;
+			continue;
+		}
+		//Cek bila terdapat operator double, pengecualian pada '(' dan ')'
+		if((isOperator(input_s[i])==1 && nextHarusDigit==0)){
+			nextHarusDigit=1;
+			continue;
+		}
+		else{
+			printf("Masukan salah, ulangi!\n");
+			return 0;
+		}
+	}
+}
+
+int isDigit(char c){
+	if(c>='0' && c<='9') {
+		return 1;
+	}
+	return 0;
+}
+
+int isOperator(char c){
+	if((c>39 && c<44) || c=='-' || c=='/' || c==':' || c=='^' || c=='x' || c=='X'){
+		return 1;
+	}
+	return 0;
+}
+
+int isUpperPrior(char c){
+	if(c=='(' || c==')'){
+		return 1;
+	}
+	return 0;
 }
